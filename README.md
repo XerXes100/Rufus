@@ -143,7 +143,13 @@ The **768** in **IndexFlatIP(768)** refers to the dimensionality of the embeddin
 
 The **IndexFlatIP(768)** was chosen because it directly uses these 768-dimensional embeddings for exact match retrieval. This index works well with the embeddings' dimensionality, ensuring high-quality and accurate search results. In cases where scalability or faster retrieval with a slight trade-off in accuracy is required, other indexes like **IVF** (Inverted File) or **PQ** (Product Quantization) would be more appropriate.
 
-### 4. How to Evaluate?
+### 4. Dimensionality Challenges with PDF Embedding
+
+While working with PDF files, I encountered challenges related to the dimensionality of the extracted text. PDF text often comes in a multi-dimensional structure (3D array), which is not compatible with the 2D vector-based embeddings typically used in similarity search.
+
+To resolve this, I needed to reshape the PDF text data into a 2D array format. I implemented a strategy to transform the 3D structure of text embeddings into a 2D structure, ensuring that the extracted content could be indexed and retrieved efficiently. This reshaping process allowed the embeddings to align with the required format for FAISS indexing, ensuring that the PDF data was properly processed and could be included in the search results.
+
+### 5. How to Evaluate?
 
 Evaluating a retrieval system can be challenging, especially when there is no clear ground truth or benchmark. In this case, I encountered difficulties in applying traditional performance metrics due to the lack of labeled data for comparison. As a result, I relied on:
 - **Manual Inspection**: I manually checked the top retrieved results to ensure they were relevant to the queries and aligned with expectations.
