@@ -98,8 +98,12 @@ Example:
 ```python
 query = "Extract information about research"
 base_url = "https://www.cmu.edu/about/index.html"
-max_depth = 2
+max_depth = 0
 ```
+
+**Caution**:
+
+If you set max_depth > 0, it will significantly increase the retrieval time, as the system will crawl more pages at greater depths, potentially adding substantial overhead to the process.
 
 ### Step 6: Run the Script
 
