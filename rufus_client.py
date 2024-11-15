@@ -203,7 +203,7 @@ class RufusClient:
                         # Reshape pdf_embedding to 2D if necessary
                         pdf_embedding = pdf_embedding.reshape(1, -1)  
                         self.passages_text.append(pdf_text)
-                        self.index.add(pdf_embedding) # Remove extra brackets 
+                        self.index.add(pdf_embedding) # Remove extra brackets to handle 2D array
 
             nested_links = soup.find_all("a", href=True)
             for link in nested_links:
